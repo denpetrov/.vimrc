@@ -771,6 +771,11 @@ vmap <leader>s :s//<left>
 nmap <leader>w <C-w>w
 
 "--------------------------------------------------
+" MacVim
+
+set guifont=Menlo\ Regular:h14
+
+"--------------------------------------------------
 " Aautocmd
 
 " It executes specific command when specific events occured
