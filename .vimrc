@@ -209,6 +209,16 @@ NeoBundle 'ervandew/screen'
 " Go lang
 NeoBundle 'fatih/vim-go'
 
+" REPL in vim
+NeoBundle "zweifisch/pipe2eval"
+
+" Pyenv
+NeoBundle 'lambdalisue/vim-pyenv'
+
+" Ipython
+NeoBundle 'jpalardy/vim-slime', { 'on_ft': 'python' }
+NeoBundle 'hanschen/vim-ipython-cell', { 'on_ft': 'python' }
+
 call neobundle#end()
 
 " Enable Indent in plugins
@@ -258,6 +268,9 @@ if executable('ack-grep')
     let g:unite_source_grep_default_opts = '--no-heading --no-color -a -H'
     let g:unite_source_grep_recursive_opt = ''
 endif
+
+" REPL in vim
+" let g:pipe2eval_map_key = '<Leader>p2e'
 
 " Hotkey for open window with most recent files
 nnoremap <silent><leader>m :<C-u>Unite file_mru <CR>
@@ -479,6 +492,7 @@ autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType python setlocal omnifunc=python3complete#Complete
 
 " Enable pylint
 " autocmd FileType python compiler pylint
@@ -776,7 +790,7 @@ nmap <leader>w <C-w>w
 set guifont=Menlo\ Regular:h14
 
 "--------------------------------------------------
-" Aautocmd
+" Autocmd
 
 " It executes specific command when specific events occured
 " like reading or writing file, or open or close buffer
@@ -833,3 +847,31 @@ inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
         \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
         \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
 imap <C-@> <C-Space>">)>)
+
+
+"--------------------------------------------------
+" Tags
+
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+"--------------------------------------------------
+" IPython >
+
+" ---- Slime >
+" always use tmux
+let g:slime_target = 'tmux'
+
+" fix paste issues in ipython
+let g:slime_python_ipython = 1
+
+" always send text to the top-right pane in the current tmux tab without asking
+let g:slime_default_config = {
+            \ 'socket_name': get(split($TMUX, ','), 0),
+            \ 'target_pane': '{top-right}' }
+let g:slime_dont_ask_default = 1
+
+" ---- Slime <
+
+" IPython <
+
