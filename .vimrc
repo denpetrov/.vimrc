@@ -8,6 +8,7 @@
 " Use 256 colors in vim
 " some plugins not work without it
 set t_Co=256
+set relativenumber
 
 " Turn off filetype plugins before bundles init
 filetype off
@@ -56,7 +57,8 @@ NeoBundle 'Shougo/vimproc', {
 \ }
 
 " Some support functions used by delimitmate, and snipmate
-NeoBundle 'vim-scripts/tlib'
+" Commented out by Denis. Reason: line   77: E1208: -complete used without allowing arguments
+" NeoBundle 'vim-scripts/tlib'
 
 " Improve bookmarks in vim
 " Allow word for bookmark marks, and nice quickfix window with bookmark list
