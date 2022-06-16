@@ -213,6 +213,7 @@ NeoBundle 'fatih/vim-go'
 
 " REPL in vim
 NeoBundle "zweifisch/pipe2eval"
+NeoBundle "sillybun/vim-repl"
 
 " Pyenv
 NeoBundle 'lambdalisue/vim-pyenv'
